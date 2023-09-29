@@ -32,7 +32,7 @@ const pause=()=>{
 const parar=()=>{
     /**sobreescribimos styles */
     bolita.style.animation="none";
-    bolita.style.transform="rotate(-90deg) translateX(60px)";
+    bolita.style.transform="rotate(-90deg) translateX(125px)";
 
     botonPausa.classList.remove('running');
     contadorTiempo=0;
