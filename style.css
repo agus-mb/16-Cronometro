@@ -64,9 +64,9 @@ animation-play-state: paused;
 
 /****************************************/
 .running{
-
+background-color: blue;
 }
 
 .stop{
-    
+background-color: green;
 }

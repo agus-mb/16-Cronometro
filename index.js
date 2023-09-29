@@ -3,11 +3,13 @@ const pantalla=document.getElementById('pantalla-visualizadora');
 const botonPausa=document.getElementById('pausa-arranque');
 const bolita=document.getElementById('circulo-segundero');
 
+console.log(botonPausa)
+
 let contadorIntervalo; /**stopwatchInterval */
 let contadorTiempo=0; /**runningTime */
 
 
-const pararYEmpezar=()=>{
+const pausaArranque=()=>{
     const estaPausado=!botonPausa.classList.contains('running');
     if(estaPausado){
         botonPausa.classList.add('running');
@@ -21,8 +23,23 @@ const pararYEmpezar=()=>{
 /***************************************/
 
 const pause=()=>{
+    /**sobreescribimos styles */
+    bolita.style.animationPlayState = "paused";
+    clearInterval(contadorIntervalo);
 
 }
+/****************************************/
+const parar=()=>{
+    /**sobreescribimos styles */
+    bolita.style.animation="none";
+    bolita.style.transform="rotate(-90deg) translateX(60px)";
+
+    botonPausa.classList.remove('running');
+    contadorTiempo=0;
+    clearInterval(contadorIntervalo);
+    pantalla.textContent="00:00";
+}
+
 
 /*****************************************/
 
@@ -38,7 +55,7 @@ const start=()=>{
     /*********************** */
 
     /** le decimos que hara, agregando 1000 lo cual indica que esto se ejecutara cada 1000 segundos*/
-    contadorIntervalo=intervalo=( ()=>{
+    contadorIntervalo= setInterval( ()=>{
         tiempoTranscurrido= Date.now() - inicioTiempo;
         pantalla.textContent = calcularTiempo(tiempoTranscurrido);
     }, 1000)
